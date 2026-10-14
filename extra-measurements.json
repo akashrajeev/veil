@@ -1,0 +1,11 @@
+{
+  "weighted_audience_trials": 60,
+  "audience_sequence_checks": 908,
+  "violations": 0,
+  "invalid_calendar_answers": 0,
+  "known_calendar_negative_control": {
+    "worlds": 128,
+    "global_prior_only_violation_cells": 32,
+    "audience_conditioned_violation_cells": 0
+  }
+}

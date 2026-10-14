@@ -1,0 +1,11 @@
+{
+  "seed": 102723,
+  "trials": 32,
+  "depth": 16,
+  "world_traces": 512,
+  "prefix_violation_cells": 0,
+  "invalid_meetings": 0,
+  "invalid_calendar_answers": 0,
+  "seconds": 41.148202897999,
+  "scope": "sampled declared weighted one-observer/one-fact sessions, full result fields and public-prefix adaptive requests; no arbitrary adversary proof"
+}

@@ -1,0 +1,21 @@
+{
+  "resident_classes": 16,
+  "class_sequence_checks": 5488,
+  "world_traces": 87808,
+  "violation_cells": 0,
+  "invalid_meetings": 0,
+  "invalid_calendar_answers": 0,
+  "elapsed_seconds": 147.45021301500128,
+  "depth": 3,
+  "request_sequences": 343,
+  "vocabulary": [
+    "parity",
+    "slot0",
+    "slot1",
+    "slot2",
+    "slot3",
+    "schedule",
+    "unsupported"
+  ],
+  "scope": "four completed batches covering all resident-calendar classes in the uniform four-window model; not arbitrary priors or unbounded sequences"
+}

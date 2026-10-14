@@ -1,0 +1,11 @@
+{
+  "seed": 93344,
+  "trials": 96,
+  "depth": 32,
+  "world_traces": 1536,
+  "violation_cells": 0,
+  "invalid_meetings": 0,
+  "invalid_calendar_answers": 0,
+  "seconds": 23.124673740998333,
+  "scope": "finite sampled resident-prior models; publicly adaptive requests, not arbitrary adversaries"
+}

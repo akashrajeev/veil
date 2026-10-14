@@ -1,0 +1,11 @@
+{
+  "seed": 104951,
+  "models": 128,
+  "depth": 24,
+  "world_traces": 1089,
+  "prefix_violation_cells": 0,
+  "invalid_meetings": 0,
+  "invalid_calendar_answers": 0,
+  "seconds": 12.818940696000936,
+  "scope": "sampled explicitly correlated observer-conditioned calendar subsets with per-world weights; public-prefix adaptive core evidence, not fixed dialogue channel or real prior discovery"
+}
