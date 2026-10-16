@@ -1,0 +1,3 @@
+{"approval_paths_runs": 448, "request_window_cells_with_calendar_dependence": 0, "passed": true,
+ "engine": "mcp_server.py sha256 106f424fe512b70ecfc453de9e2d242ee9d96d08db6c9fa04e303e0690cfd922",
+ "note": "Targeted re-run of the approvals mode on the final engine after the approval-persistence change, which touched exactly this machinery (request/decide now persist; restore on first status)."}

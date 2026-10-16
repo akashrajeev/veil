@@ -1,0 +1,68 @@
+{
+  "audience_results": [
+    {
+      "name": "naive",
+      "completed": 175,
+      "audience_groups": 16,
+      "prefix_violation_cells": 164,
+      "max_posterior_shift": "1/2",
+      "invalid_meetings": 0,
+      "invalid_calendar_answers": 0,
+      "median_step_ms": null,
+      "max_step_ms": null
+    },
+    {
+      "name": "guard_original_prior",
+      "completed": 112,
+      "audience_groups": 16,
+      "prefix_violation_cells": 0,
+      "max_posterior_shift": "0",
+      "invalid_meetings": 0,
+      "invalid_calendar_answers": 0,
+      "median_step_ms": null,
+      "max_step_ms": null
+    },
+    {
+      "name": "guard_resident_prior",
+      "completed": 112,
+      "audience_groups": 16,
+      "prefix_violation_cells": 0,
+      "max_posterior_shift": "0",
+      "invalid_meetings": 0,
+      "invalid_calendar_answers": 0,
+      "median_step_ms": 0.030790999517193995,
+      "max_step_ms": 1.8745339984889142
+    },
+    {
+      "name": "guard_adaptive",
+      "completed": 112,
+      "audience_groups": 16,
+      "prefix_violation_cells": 0,
+      "max_posterior_shift": "0",
+      "invalid_meetings": 0,
+      "invalid_calendar_answers": 0,
+      "median_step_ms": 0.42220399882353377,
+      "max_step_ms": 2.0049890008522198
+    },
+    {
+      "name": "guard_half_budget",
+      "completed": 175,
+      "audience_groups": 16,
+      "prefix_violation_cells": 0,
+      "max_posterior_shift": "1/2",
+      "invalid_meetings": 0,
+      "invalid_calendar_answers": 0,
+      "median_step_ms": 0.03204499989806209,
+      "max_step_ms": 1.9454680004855618
+    }
+  ],
+  "exhaustive": {
+    "request_sequences": 81,
+    "steps_per_sequence": 4,
+    "world_traces": 20736,
+    "audience_sequence_checks": 1296,
+    "violation_cells": 0,
+    "invalid_calendar_answers": 0,
+    "elapsed_seconds": 37.34626255100011
+  }
+}

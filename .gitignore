@@ -1,0 +1,7 @@
+node_modules/
+__pycache__/
+.state/
+shots/
+server.log
+server.pid
+*.log

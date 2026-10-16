@@ -1,0 +1,1 @@
+{"name":"veil-local-simulator","version":"0.1.0","private":true,"description":"Bounded synthetic conversation-disclosure demo","scripts":{"test:browser":"node browser-test.cjs"},"devDependencies":{"playwright":"1.64.0"}}

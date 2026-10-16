@@ -1,0 +1,8 @@
+{
+ "check": "cross-epoch fresh-safe pair enumeration (in-process MCP handler)",
+ "configs": 38,
+ "calendars_per_config": 16,
+ "ordered_pairs_tested": 7136,
+ "hits": [],
+ "verdict": "PASS - no fresh-safe pair is refused in-session: across the typed vocabulary, a UI reset cannot compose a refused pair about the same calendar"
+}

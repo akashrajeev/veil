@@ -1,0 +1,74 @@
+{
+ "label": "weighted_[1,3]x[2,1]_length<=2_KNOWN-ORACLE-BUG3-headcount-vs-weighted-prior",
+ "runs": 5376,
+ "transcript_groups": 673,
+ "groups_with_joint_deviation": 673,
+ "note": "Second documented instance of PROVENANCE-JOINT.md harness bug #3: joint_mcp_check.py weighted leg counts group members by headcount and compares against the weighted declared prior. Uniform-headcount vs weighted-prior mismatch flags every group (673/673) including pure-refusal groups where the engine correctly leaks nothing. NOT an engine regression; the corrected weight-normalized oracle is joint_mcp_weighted.py. Preserved per discipline; superseded by the weight-normalized re-run.",
+ "engine_during_run": "mcp_server.py sha256 2f3a24ae (imported at process start 00:38, pre-approval-fix)",
+ "examples": [
+  [
+   [
+    "early prep",
+    "late prep"
+   ],
+   [
+    "is alice free for early prep"
+   ],
+   [
+    "1/4",
+    "1/4",
+    "1/4",
+    "1/4"
+   ],
+   [
+    "1/6",
+    "1/2",
+    "1/12",
+    "1/4"
+   ]
+  ],
+  [
+   [
+    "early prep",
+    "late prep"
+   ],
+   [
+    "is alice free for late prep"
+   ],
+   [
+    "1/4",
+    "1/4",
+    "1/4",
+    "1/4"
+   ],
+   [
+    "1/6",
+    "1/2",
+    "1/12",
+    "1/4"
+   ]
+  ],
+  [
+   [
+    "early prep",
+    "late prep"
+   ],
+   [
+    "is alice free for dinner"
+   ],
+   [
+    "1/4",
+    "1/4",
+    "1/4",
+    "1/4"
+   ],
+   [
+    "1/6",
+    "1/2",
+    "1/12",
+    "1/4"
+   ]
+  ]
+ ],
+ "passed": false
+}

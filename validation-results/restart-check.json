@@ -1,0 +1,151 @@
+{
+ "check": "server process stop/restart persistence (real HTTP server, .state file)",
+ "scenarios": [
+  {
+   "check": "restart A: single-window session",
+   "pre": {
+    "answers": {
+     "dinner": "Alice is free for dinner.",
+     "early_prep": "I can't answer that."
+    },
+    "status": {
+     "scope": "Synthetic one-observer, one-protected-fact model. Not a real calendar integration or privacy guarantee.",
+     "events": 2
+    },
+    "view": {
+     "protected_window": "early prep",
+     "alice_calendar": 7,
+     "with_veil_alive_calendars": [
+      4,
+      5,
+      6,
+      7,
+      12,
+      13,
+      14,
+      15
+     ],
+     "with_veil_information_bits": {
+      "protected_window_bits": 0.0,
+      "calendar_bits": 1.0,
+      "protected_window_prior_bits": 1.0,
+      "calendar_prior_bits": 4.0
+     },
+     "events": 2
+    },
+    "generation": "09da704148004199b2f6c96ad2ce8c4d"
+   },
+   "post": {
+    "status": {
+     "scope": "Synthetic one-observer, one-protected-fact model. Not a real calendar integration or privacy guarantee.",
+     "events": 2
+    },
+    "view": {
+     "protected_window": "early prep",
+     "alice_calendar": 7,
+     "with_veil_alive_calendars": [
+      4,
+      5,
+      6,
+      7,
+      12,
+      13,
+      14,
+      15
+     ],
+     "with_veil_information_bits": {
+      "protected_window_bits": 0.0,
+      "calendar_bits": 1.0,
+      "protected_window_prior_bits": 1.0,
+      "calendar_prior_bits": 4.0
+     },
+     "events": 2
+    },
+    "generation": "09da704148004199b2f6c96ad2ce8c4d",
+    "late": "Alice is free for late prep.",
+    "early_prep": "I can't answer that."
+   },
+   "checks": {
+    "generation identical": true,
+    "events identical": true,
+    "config identical": true,
+    "refusal still uniform": true,
+    "next answer deterministic": true
+   },
+   "passed": true
+  },
+  {
+   "check": "restart B: joint config + pending approval",
+   "pre": {
+    "xor": "I can't answer that.",
+    "approvals": [
+     [
+      "can alice cover exactly one of the two prep windows",
+      "pending"
+     ]
+    ],
+    "view": {
+     "protected_windows": [
+      "early prep",
+      "late prep"
+     ],
+     "alice_calendar": 7,
+     "events": 2
+    },
+    "generation": "45cf6d4e2e25496991022c9255e78c28"
+   },
+   "post": {
+    "approvals": [
+     [
+      "can alice cover exactly one of the two prep windows",
+      "pending"
+     ]
+    ],
+    "view": {
+     "protected_windows": [
+      "early prep",
+      "late prep"
+     ],
+     "alice_calendar": 7,
+     "events": 2
+    },
+    "generation": "45cf6d4e2e25496991022c9255e78c28"
+   },
+   "checks": {
+    "joint config identical": true,
+    "generation identical": true,
+    "xor refused pre": true,
+    "pending approval existed pre": true,
+    "pending approval survives restart": true
+   },
+   "passed": true
+  },
+  {
+   "check": "restart C: approved-disclosure pause persistence",
+   "pre": {
+    "pause_answer": "I can't answer that. Alice approved a disclosure earlier, so I now need her approval for each further answer.",
+    "generation": "c2e0b470f98e4258b8770526783ed041",
+    "events": 2
+   },
+   "post": {
+    "pause_answer": "I can't answer that. Alice approved a disclosure earlier, so I now need her approval for each further answer.",
+    "approvals_post": [
+     [
+      "is alice free for early prep",
+      "approved"
+     ]
+    ],
+    "generation": "c2e0b470f98e4258b8770526783ed041",
+    "events": 2
+   },
+   "checks": {
+    "pre pause held": true,
+    "generation identical": true,
+    "events identical": true,
+    "post-disclosure pause SURVIVES restart": true
+   },
+   "passed": true
+  }
+ ],
+ "passed": true
+}

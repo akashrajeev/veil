@@ -1,0 +1,4 @@
+{"label": "uniform", "runs": 4032, "transcript_groups": 543, "joint_violations": 0, "examples": []}
+{"label": "weighted_product_prior_[1,3]x[2,1]", "runs": 4032, "transcript_groups": 543, "joint_violations": 0, "examples": []}
+{"question": "can alice cover exactly one of the two prep windows (XOR of protected bits)", "marginal_guard_bit0_admits": true, "marginal_guard_bit1_admits": true, "joint_guard_admits": false, "joint_distribution_inside_each_parity_answer": {"PARITY:0": "(Fraction(1, 2), Fraction(0, 1), Fraction(0, 1), Fraction(1, 2))", "PARITY:1": "(Fraction(0, 1), Fraction(1, 2), Fraction(1, 2), Fraction(0, 1))"}, "baseline_joint": "(Fraction(1, 4), Fraction(1, 4), Fraction(1, 4), Fraction(1, 4))"}
+{"joint_protected_{0,1}": ["schedule", "slot2", "slot3"], "single_protected_{0}": ["parity", "schedule", "slot1", "slot2", "slot3"]}

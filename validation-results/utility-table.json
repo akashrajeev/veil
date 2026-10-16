@@ -1,0 +1,22 @@
+{
+ "artifact": "utility-admission-vs-usefulness, joint candidate",
+ "bounds": "engine-level, declared 16-calendar world, bob=5 fixed, depth<=2 request sequences, uniform prior, 10 configs (4 single-window + 6 window-pairs); (controller, actual-calendar) states enumerated exhaustively within those bounds. Admission measured separately from usefulness. Says nothing about longer histories, other declared priors, or worlds outside the declared model.",
+ "findings": {
+  "schedule_admission": "admitted in every enumerated state of all 10 configs (160/160, 168/168, 144/144, 152/152 singles; 64/64, 96/96, 96/96, 96/96, 96/96, 80/80 pairs)",
+  "schedule_usefulness_meeting_returned": {
+   "early prep": "80/160",
+   "late prep": "112/168",
+   "dinner": "72/144",
+   "cleanup": "112/152",
+   "early prep+late prep": "32/64",
+   "early prep+dinner": "0/96",
+   "early prep+cleanup": "48/96",
+   "late prep+dinner": "32/96",
+   "late prep+cleanup": "64/96",
+   "dinner+cleanup": "40/96"
+  },
+  "degenerate_config": "{early prep+dinner}: bob's free windows are exactly the protected pair, so no safe meeting proposal exists in the measured bounds - admission without usefulness. The tradeoff is real and config-dependent; Veil makes it visible instead of hiding it.",
+  "truthfulness": "every returned meeting verified actually common to both calendars in its actual world (assertion held in all enumerated states)"
+ },
+ "parity_counterexample_checked_cases": "initial state, uniform prior, pair {early prep,late prep}: both per-window margins exactly 1/2 (marginal guard admits) while the joint collapses to [1/2,0,0,1/2]; joint guard refuses. Marginal-contract admissions of the XOR question measured at 7/9, 7/11, 9/9, 11/11 reachable states for the four single-window configs (engine compatible-set grain, depth<=2) - the counterexample claim is limited to these checked cases."
+}

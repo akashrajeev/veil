@@ -1,0 +1,12 @@
+const {chromium}=require('playwright');
+(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1440,height:1100}});const errs=[];
+p.on('pageerror',e=>errs.push(String(e)));
+await p.goto('http://127.0.0.1:8765/alexa');await p.waitForSelector('text=New household');
+await p.click('button.link:text-is("is alice free for early prep")');await p.waitForSelector("text=I can't answer that.");
+await p.click('text=ask Alice to approve this');await p.waitForSelector("text=I've asked Alice");
+await p.waitForSelector('text=if approved the room works out');
+await p.screenshot({path:'/tmp/veil-flow1.png'});
+await p.click('button:text-is("approve")');await p.waitForSelector('text=Alice agreed',{timeout:8000});
+await p.waitForSelector('text=direct answers are paused');
+await p.screenshot({path:'/tmp/veil-flow2.png'});
+if(errs.length){console.log('page errors',errs);process.exit(1)}console.log('approval flow ok');await b.close()})().catch(e=>{console.log('FAIL',e.message);process.exit(1)});

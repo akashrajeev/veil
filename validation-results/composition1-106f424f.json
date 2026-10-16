@@ -1,0 +1,4 @@
+{"composition_runs": 3584, "max_approved_disclosures": 1, "visible_transcript_groups": 728,
+ "groups_where_operator_claim_differs_from_room_posterior": 0, "passed": true,
+ "engine": "mcp_server.py sha256 106f424fe512b70ecfc453de9e2d242ee9d96d08db6c9fa04e303e0690cfd922",
+ "note": "Bounded depth-1 composition re-run on the final engine: validates the disclosed-region gating after after_approved_disclosures was re-keyed to actual approved records. Depth-2 (18,944 runs) remains the single-fact-era artifact, labeled as such."}

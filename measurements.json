@@ -1,0 +1,165 @@
+{
+  "model": "256 uniform joint four-slot calendars; secret=Alice slot0 available",
+  "script": [
+    "parity",
+    "slot1",
+    "schedule"
+  ],
+  "tests_run": 12,
+  "test_failures": 0,
+  "test_seconds": 20.703660577000846,
+  "cases": [
+    {
+      "name": "naive_after_composition",
+      "budget": "0",
+      "all_world_replay_seconds": 0.0005936950001341756,
+      "worlds": 256,
+      "completed": 175,
+      "completion_rate": 0.68359375,
+      "mean_selected_slot": 1.1485714285714286,
+      "max_posterior_shift": "1/2",
+      "prefix_violation_cells": 20,
+      "invalid_meetings": 0,
+      "invalid_calendar_answers": 0,
+      "prefix_cell_counts": [
+        2,
+        4,
+        16
+      ]
+    },
+    {
+      "name": "strict_after_composition",
+      "budget": "0",
+      "all_world_replay_seconds": 2.038170361000084,
+      "worlds": 256,
+      "completed": 112,
+      "completion_rate": 0.4375,
+      "mean_selected_slot": 2.4285714285714284,
+      "max_posterior_shift": "0",
+      "prefix_violation_cells": 0,
+      "invalid_meetings": 0,
+      "invalid_calendar_answers": 0,
+      "prefix_cell_counts": [
+        2,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "strict_schedule_only",
+      "budget": "0",
+      "all_world_replay_seconds": 4.375212555998587,
+      "worlds": 256,
+      "completed": 148,
+      "completion_rate": 0.578125,
+      "mean_selected_slot": 1.8108108108108107,
+      "max_posterior_shift": "0",
+      "prefix_violation_cells": 0,
+      "invalid_meetings": 0,
+      "invalid_calendar_answers": 0,
+      "prefix_cell_counts": [
+        4
+      ]
+    },
+    {
+      "name": "budget_1_8_after_composition",
+      "budget": "1/8",
+      "all_world_replay_seconds": 2.167435897001269,
+      "worlds": 256,
+      "completed": 112,
+      "completion_rate": 0.4375,
+      "mean_selected_slot": 2.4285714285714284,
+      "max_posterior_shift": "0",
+      "prefix_violation_cells": 0,
+      "invalid_meetings": 0,
+      "invalid_calendar_answers": 0,
+      "prefix_cell_counts": [
+        2,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "budget_1_4_after_composition",
+      "budget": "1/4",
+      "all_world_replay_seconds": 2.027899327000341,
+      "worlds": 256,
+      "completed": 112,
+      "completion_rate": 0.4375,
+      "mean_selected_slot": 2.4285714285714284,
+      "max_posterior_shift": "0",
+      "prefix_violation_cells": 0,
+      "invalid_meetings": 0,
+      "invalid_calendar_answers": 0,
+      "prefix_cell_counts": [
+        2,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "budget_1_2_after_composition",
+      "budget": "1/2",
+      "all_world_replay_seconds": 2.154322267997486,
+      "worlds": 256,
+      "completed": 175,
+      "completion_rate": 0.68359375,
+      "mean_selected_slot": 1.1485714285714286,
+      "max_posterior_shift": "1/2",
+      "prefix_violation_cells": 0,
+      "invalid_meetings": 0,
+      "invalid_calendar_answers": 0,
+      "prefix_cell_counts": [
+        2,
+        4,
+        16
+      ]
+    }
+  ],
+  "example": {
+    "key": 117,
+    "alice_available": [
+      0,
+      1,
+      2
+    ],
+    "bob_available": [
+      0,
+      2
+    ],
+    "naive": [
+      {
+        "request": "parity",
+        "policy": "calendar-parity-0-1",
+        "output": "PARITY:0"
+      },
+      {
+        "request": "slot1",
+        "policy": "alice-slot1-availability",
+        "output": "ALICE_SLOT1:1"
+      },
+      {
+        "request": "schedule",
+        "policy": "first-common-0-1-2-3",
+        "output": "MEETING:0"
+      }
+    ],
+    "guarded": [
+      {
+        "request": "parity",
+        "policy": "calendar-parity-0-1",
+        "output": "PARITY:0"
+      },
+      {
+        "request": "slot1",
+        "policy": "uniform-refusal",
+        "output": "NEEDS_PRIVATE_DECISION"
+      },
+      {
+        "request": "schedule",
+        "policy": "first-common-2-3",
+        "output": "MEETING:2"
+      }
+    ]
+  }
+}
