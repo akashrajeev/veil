@@ -12,6 +12,7 @@ from audit_export import export as export_guarded
 from intents import parse as parse_intent
 import dialog_store
 import mcp_server
+import real_demo
 from dialog import audit_dialogue
 from experiment_spec import run as run_spec
 
@@ -28,6 +29,7 @@ MODEL = hashlib.sha256(json.dumps([asdict(w) for w in WORLDS], sort_keys=True).e
 ACTUAL = next(w for w in WORLDS if w.key == 117)
 KNOWN = tuple(w for w in WORLDS if w.bob == ACTUAL.bob)
 PATH = STORE / 'dinner.json'
+REAL_GUARDS = {}  # case name -> CalendarGuard (pinned public feeds only)
 REQUESTS = ('parity','slot1','schedule')
 NAIVE = {'parity':PARITY, 'slot1':BIT1,
          'schedule':Policy('first-common-0-1-2-3','schedule',(0,1,2,3))}
@@ -141,15 +143,18 @@ class Handler(BaseHTTPRequestHandler):
                 except (ValueError,TypeError,KeyError):return self.reply({'error':'Invalid local dialogue state. Start a new synthetic session.'},409)
         if route.path=='/api/audit' and not route.query:
             return self.reply(export_guarded())
+        if route.path=='/api/real/cases' and not route.query:
+            try:return self.reply({'cases':real_demo.cases(),'note':'Real public schedule feeds, timing only. Model remains declared assumptions; not a real-world privacy guarantee.'})
+            except OSError:return self.reply({'error':'Real-data cases unavailable in this copy'},503)
         if self.path == '/api/state':
             with LOCK:
                 try: self.reply(snapshot(load()))
                 except OSError:return self.reply({'error':'Local storage unavailable. No new answer was saved.'},503)
                 except (ValueError,KeyError,TypeError,AttributeError,json.JSONDecodeError):
                     self.reply({'error':'Saved demonstration state is invalid. Reset the demo.'},409)
-        elif route.path in ('/','/index.html','/alexa') and (route.path=='/alexa' or not route.query):
+        elif route.path in ('/','/index.html','/alexa','/real') and (route.path in ('/alexa','/real') or not route.query):
             try:
-                data=(ROOT/('alexa.html' if route.path=='/alexa' else 'index.html')).read_bytes()
+                data=(ROOT/{'/alexa':'alexa.html','/real':'real.html'}.get(route.path,'index.html')).read_bytes()
                 if route.path=='/alexa':data=data.replace(b'__OPERATOR_TOKEN__',OPERATOR_TOKEN.encode())
             except OSError:return self.reply({'error':'Local page file missing. Extract the complete package and run from its folder.'},503)
             self.send_response(200); self.send_header('Content-Type','text/html; charset=utf-8')
@@ -220,6 +225,26 @@ class Handler(BaseHTTPRequestHandler):
                     return self.reply(dialog_store.advance(path,body['text'],body['generation'],body['expected']))
                 except OSError:return self.reply({'error':'Local storage unavailable. No new answer was saved.'},503)
                 except (ValueError,TypeError,KeyError):return self.reply({'error':'Unsupported or invalid local dialogue request'},400)
+        if self.path in ('/api/real/select','/api/real/ask'):
+            origin=self.headers.get('Origin')
+            if origin and origin not in ('http://127.0.0.1:8765','http://localhost:8765'):
+                return self.reply({'error':'Local origin required'},403)
+            with LOCK:
+                try:
+                    size=int(self.headers.get('Content-Length','0'))
+                    if not 1<=size<=4096:raise ValueError()
+                    body=json.loads(self.rfile.read(size))
+                    if self.path=='/api/real/select':
+                        if set(body)!={'case'}:raise ValueError()
+                        guard=real_demo.select(STORE,body['case'])
+                        REAL_GUARDS[body['case']]=guard
+                        return self.reply(guard.public_windows())
+                    if set(body)!={'case','request'} or body['request'] not in real_demo.ALLOWED_REQUESTS:raise ValueError()
+                    guard=REAL_GUARDS.get(body['case']) or real_demo.select(STORE,body['case'])
+                    REAL_GUARDS[body['case']]=guard
+                    return self.reply(guard.ask(body['request']))
+                except OSError:return self.reply({'error':'Local storage unavailable. No new answer was saved.'},503)
+                except (ValueError,TypeError,KeyError) as e:return self.reply({'error':str(e) or 'Invalid real-data request'},400)
         if self.path not in ('/api/next','/api/reset'): return self.reply({'error':'Unknown local route'},404)
         try:
             size=int(self.headers.get('Content-Length','0'))

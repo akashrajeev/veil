@@ -64,3 +64,11 @@ This is a private, single-conversation, loopback-only lab. Bearer authentication
 - Official pinned SDK source/docs: https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/v1.30.0/README.md
 
 The organizer FAQ says gated Alexa+ tools are unavailable to hackathon participants, and a web page making actual initialize/tools-list/tools-call requests over Streamable HTTP can demonstrate a self-hosted MCP server. This lab does not claim to connect to Alexa+.
+
+## Real public-calendar cases (2026-10-16, same branch family)
+
+The real-input path has since been validated against real, busy, public
+schedule data (FOSDEM 2026, Premier League fixtures, India public holidays,
+F1 2026) with a new `real-public-ics` provenance label, and folded into the
+local demo at `/real`. See REAL-PUBLIC-CALENDAR-CASES.md for sources,
+verified behavior and limits.

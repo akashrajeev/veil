@@ -39,7 +39,7 @@ def windows_checked(windows, coverage):
     return intervals
 
 def minimize(payload, windows, *, source, as_of):
-    if source not in ('synthetic-fixture', 'live-google-freebusy'):
+    if source not in ('synthetic-fixture', 'live-google-freebusy', 'real-public-ics'):
         raise ValueError('explicit supported provenance required')
     instant(as_of)
     if not isinstance(payload, dict) or not {'start','end','calendars'} <= set(payload):
@@ -70,7 +70,7 @@ def validate_snapshot(value):
         raise ValueError('invalid minimized snapshot schema')
     if type(value['schema']) is not int or value['schema'] != 1:
         raise ValueError('unsupported snapshot version')
-    if value['source'] not in ('synthetic-fixture','live-google-freebusy'):
+    if value['source'] not in ('synthetic-fixture','live-google-freebusy','real-public-ics'):
         raise ValueError('unknown provenance')
     instant(value['as_of'])
     windows_checked(value['windows'],value['coverage'])
@@ -93,7 +93,7 @@ def private_write(path, value):
 if __name__ == '__main__':
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--input',required=True);p.add_argument('--windows',required=True)
-    p.add_argument('--source',required=True,choices=['synthetic-fixture','live-google-freebusy'])
+    p.add_argument('--source',required=True,choices=['synthetic-fixture','live-google-freebusy','real-public-ics'])
     p.add_argument('--as-of',required=True);p.add_argument('--output',required=True)
     a=p.parse_args()
     result=minimize(json.loads(Path(a.input).read_text()),json.loads(Path(a.windows).read_text()),source=a.source,as_of=a.as_of)
