@@ -5,3 +5,6 @@ shots/
 server.log
 server.pid
 *.log
+
+.venv/
+.private/

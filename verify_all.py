@@ -2,7 +2,7 @@
 import argparse,json,subprocess,sys,time
 from pathlib import Path
 ROOT=Path(__file__).parent
-UNIT=['test_mcp','test_server','test_http','test_invariants','test_secret_functions','test_evidence','test_ledger_schema','test_audit_export','test_scenario_lab','test_policy_optimality','test_intents','test_protected_fact','test_dialog','test_dialog_store','test_preferences','test_prior_lab','test_availability','test_partition_cache','test_experiment_spec','test_alternatives','test_weighted_optimum','test_state_faults','test_ordinary_demo','test_truthful_queries','test_package_lab','test_metamorphic','test_offline_cli','test_restart_equivalence','test_verification_runner','test_joint']
+UNIT=['test_mcp','test_server','test_http','test_invariants','test_secret_functions','test_evidence','test_ledger_schema','test_audit_export','test_scenario_lab','test_policy_optimality','test_intents','test_protected_fact','test_dialog','test_dialog_store','test_preferences','test_prior_lab','test_availability','test_partition_cache','test_experiment_spec','test_alternatives','test_weighted_optimum','test_state_faults','test_ordinary_demo','test_truthful_queries','test_package_lab','test_metamorphic','test_offline_cli','test_restart_equivalence','test_verification_runner','test_joint','test_calendar_input']
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--timeout-seconds',type=int,default=180,help='per-job verification limit');p.add_argument('--full',action='store_true',help='also run original audience-sequence and weighted-audience sweeps; expanded/adaptive scripts are separate');args=p.parse_args()
     if args.timeout_seconds<1:p.error('--timeout-seconds must be positive')

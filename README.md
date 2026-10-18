@@ -1,3 +1,5 @@
+> New private real-input/official-SDK lab: see [REAL-CALENDAR-LAB.md](REAL-CALENDAR-LAB.md). The original web demo below is still synthetic.
+
 # Veil
 
 An Alexa-style local simulation that checks what a conversation reveals about a

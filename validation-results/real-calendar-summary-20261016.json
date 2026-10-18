@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-16",
+  "branch": "lab/real-calendar-mcp-20261016",
+  "standard_library_tests": {
+    "count": 270,
+    "passed": true
+  },
+  "spike_tests": {
+    "count": 12,
+    "passed": true
+  },
+  "official_sdk_network_tests": {
+    "count": 4,
+    "passed": true
+  },
+  "protocol_negotiated": "2025-11-25",
+  "mcp_sdk_version": "1.30.0",
+  "synthetic_busy_fixture_sdk_check": {
+    "passed": true,
+    "made_up": true
+  },
+  "approved_live_input_sdk_check": {
+    "passed": true,
+    "successful_runs": 2,
+    "restart_tested": true
+  },
+  "personal_test_data_packaged": false,
+  "personal_test_data_deleted_locally": true,
+  "not_verified": [
+    "busy real calendar",
+    "Alexa+ connection",
+    "runtime LLM",
+    "real-world privacy guarantee",
+    "full MCP conformance",
+    "multi-user deployment"
+  ],
+  "entry_point": "calendar_mcp_server.py",
+  "original_web_demo": "unchanged, synthetic"
+}
